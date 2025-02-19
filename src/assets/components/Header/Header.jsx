@@ -4,22 +4,25 @@ import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import { Container } from '@mui/material'
 
 export default function Header() {
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position='static'>
-				<Toolbar>
-					<Typography
-						variant='h6'
-						component='div'
-						sx={{ flexGrow: 1 }}
-					>
-						Кафедра
-					</Typography>
-					<Button color='inherit'>Войти</Button>
-				</Toolbar>
+		<>
+			<AppBar position='fixed'>
+				<Container maxWidth='lg'>
+					<Toolbar>
+						<Typography
+							variant='h6'
+							sx={{ flexGrow: 1 }}
+						>
+							Кафедра
+						</Typography>
+						<Button color='inherit'>Войти</Button>
+					</Toolbar>
+				</Container>
 			</AppBar>
-		</Box>
+			<Toolbar />
+		</>
 	)
 }
