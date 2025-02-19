@@ -1,52 +1,29 @@
-import { Button, TextField, Container, CssBaseline } from '@mui/material'
+import { Button, TextField, Container, CssBaseline, Box, Card } from '@mui/material'
+import { ThemeProvider, createTheme } from '@mui/material'
 
 import Header from './assets/components/Header/Header'
 
+const theme = createTheme({
+	colorSchemes: {
+		dark: true,
+	},
+})
+
 export default function App() {
 	return (
-		<>
+		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<Header></Header>
-			<Container maxWidth='lg'>
-				<Button>123</Button>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium,
-				explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel
-				laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing
-				elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat
-				expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur
-				accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias
-				adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet
-				consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex
-				cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum
-				cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex
-				necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor
-				sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab
-				magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis
-				harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea
-				ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum
-				dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde
-				ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum!
-				Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-				Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita.
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium,
-				explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel
-				laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing
-				elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat
-				expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur
-				accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias
-				adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet
-				consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex
-				cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum
-				cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex
-				necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor
-				sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab
-				magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis
-				harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea
-				ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum
-				dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum! Blanditiis harum cumque consequuntur accusantium, explicabo unde
-				ab magnam ex cupiditate vero fugiat expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates ea ex necessitatibus alias adipisci, vel laborum!
-				Blanditiis harum cumque consequuntur accusantium, explicabo unde ab magnam ex cupiditate vero fugiat expedita.
-			</Container>
-		</>
+			<main>
+				<Box
+					component='section'
+					// sx={{ bgcolor: '#ffffff' }}
+				>
+					<Container maxWidth='lg'>
+						<Card>123</Card>
+					</Container>
+				</Box>
+			</main>
+		</ThemeProvider>
 	)
 }
