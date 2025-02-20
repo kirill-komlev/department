@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme, Typography, FormControl, FormLabel, FormHel
 
 import Header from './assets/components/Header/Header'
 import SignIn from './assets/pages/Sign-In/Sign-In.page'
+import { Route, Routes } from 'react-router'
 
 const theme = createTheme({
 	colorSchemes: {
@@ -18,23 +19,16 @@ export default function App() {
 			<CssBaseline />
 			<Header></Header>
 			<main>
-				<Box
-					component='section'
-					sx={{
-						height: 'calc(100vh - 64px)',
-					}}
-				>
-					<Container
-						maxWidth='lg'
-						sx={{
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-						}}
-					>
-						<SignIn></SignIn>
-					</Container>
-				</Box>
+				<Routes>
+					<Route
+						path='/'
+						element={<p>123</p>}
+					/>
+					<Route
+						path='Sign-in'
+						element={<SignIn></SignIn>}
+					/>
+				</Routes>
 			</main>
 		</ThemeProvider>
 	)

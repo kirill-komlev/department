@@ -9,6 +9,8 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 
 import { useColorScheme, createTheme } from '@mui/material/styles'
 
+import { Link as RouterLink } from 'react-router'
+
 const theme = createTheme({
 	colorSchemes: {
 		dark: true,
@@ -28,7 +30,13 @@ export default function Header() {
 					<Toolbar>
 						<Typography
 							variant='h6'
-							sx={{ flexGrow: 1 }}
+							color='inherit'
+							sx={{
+								flexGrow: 1,
+								textDecoration: 'none',
+							}}
+							component={RouterLink}
+							to='..'
 						>
 							Кафедра
 						</Typography>
@@ -57,6 +65,8 @@ export default function Header() {
 						<Button
 							color='inherit'
 							sx={{ marginLeft: theme.spacing(2) }}
+							component={RouterLink}
+							to='/Sign-in'
 						>
 							Войти
 						</Button>
