@@ -2,12 +2,18 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import { Container, IconButton } from '@mui/material'
+import { Container, IconButton, Tooltip } from '@mui/material'
 
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 
-import { useColorScheme } from '@mui/material/styles'
+import { useColorScheme, createTheme } from '@mui/material/styles'
+
+const theme = createTheme({
+	colorSchemes: {
+		dark: true,
+	},
+})
 
 export default function Header() {
 	const { mode, setMode } = useColorScheme()
@@ -28,22 +34,31 @@ export default function Header() {
 						</Typography>
 
 						{mode === 'light' ? (
-							<IconButton
-								aria-label='darkmode'
-								onClick={() => setMode('dark')}
-							>
-								<DarkModeIcon></DarkModeIcon>
-							</IconButton>
+							<Tooltip title='Тёмная тема'>
+								<IconButton
+									aria-label='darkmode'
+									onClick={() => setMode('dark')}
+								>
+									<DarkModeIcon></DarkModeIcon>
+								</IconButton>
+							</Tooltip>
 						) : (
-							<IconButton
-								aria-label='lightmode'
-								onClick={() => setMode('light')}
-							>
-								<LightModeIcon></LightModeIcon>
-							</IconButton>
+							<Tooltip title='Светлая тема'>
+								<IconButton
+									aria-label='lightmode'
+									onClick={() => setMode('light')}
+								>
+									<LightModeIcon></LightModeIcon>
+								</IconButton>
+							</Tooltip>
 						)}
 
-						<Button color='inherit'>Войти</Button>
+						<Button
+							color='inherit'
+							sx={{ marginLeft: theme.spacing(2) }}
+						>
+							Войти
+						</Button>
 					</Toolbar>
 				</Container>
 			</AppBar>
