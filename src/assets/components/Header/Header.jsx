@@ -33,9 +33,10 @@ export default function Header() {
 							Кафедра
 						</Typography>
 
-						{mode === 'light' ? (
+						{mode === 'system' || mode === 'light' ? (
 							<Tooltip title='Тёмная тема'>
 								<IconButton
+									color='inherit'
 									aria-label='darkmode'
 									onClick={() => setMode('dark')}
 								>
