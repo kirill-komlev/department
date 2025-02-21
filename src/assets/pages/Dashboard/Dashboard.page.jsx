@@ -16,13 +16,13 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 const columns = [
-	{ id: 'full_name', label: 'ФИО' },
-	{ id: 'position', label: 'должность' },
-	{ id: 'academic_degree', label: 'ученая степень' },
-	{ id: 'disciplines', label: 'дисциплины' },
-	{ id: 'workload', label: 'нагрузка, часов' },
-	{ id: 'community_service', label: 'общественная работа' },
-	{ id: 'part_time_work', label: 'совместительство, часов' },
+	{ id: 'full_name', label: 'ФИО', minWidth: 140, align: 'left' },
+	{ id: 'position', label: 'должность', minWidth: 140, align: 'left' },
+	{ id: 'academic_degree', label: 'ученая степень', minWidth: 150, align: 'left' },
+	{ id: 'disciplines', label: 'дисциплины', minWidth: 140, align: 'left' },
+	{ id: 'workload', label: 'нагрузка, часов', minWidth: 100, align: 'left' },
+	{ id: 'community_service', label: 'общественная работа', minWidth: 150, align: 'left' },
+	{ id: 'part_time_work', label: 'совместительство, часов', minWidth: 165, align: 'left' },
 ]
 
 export default function Dashboard({ theme }) {
@@ -59,7 +59,7 @@ export default function Dashboard({ theme }) {
 						<Table>
 							<TableHead>
 								<TableRow>
-									<TableCell>id</TableCell>
+									<TableCell style={{ minWidth: 50 }}>id</TableCell>
 									{columns.map(column => (
 										<TableCell
 											key={column.id}
@@ -90,12 +90,12 @@ export default function Dashboard({ theme }) {
 														</>
 													)
 												})}
-												<TableCell>
+												<TableCell style={{ paddingInline: 8 }}>
 													<IconButton aria-label='change'>
 														<SettingsIcon />
 													</IconButton>
 												</TableCell>
-												<TableCell>
+												<TableCell style={{ paddingInline: 8 }}>
 													<IconButton
 														aria-label='delete'
 														color='error'
@@ -118,6 +118,10 @@ export default function Dashboard({ theme }) {
 						page={page}
 						onPageChange={handleChangePage}
 						onRowsPerPageChange={handleChangeRowsPerPage}
+						labelRowsPerPage='Строк на странице'
+						labelDisplayedRows={function defaultLabelDisplayedRows({ from, to, count }) {
+							return `${from}–${to} из ${count !== -1 ? count : `больше чем ${to}`}`
+						}}
 					/>
 				</Container>
 			</Box>
