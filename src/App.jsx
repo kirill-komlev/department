@@ -1,11 +1,12 @@
 import { useState, useRef } from 'react'
+import { Link, Route, Routes } from 'react-router'
 
 import { Button, TextField, Container, CssBaseline, Box, Card } from '@mui/material'
 import { ThemeProvider, createTheme, Typography, FormControl, FormLabel, FormHelperText, Input } from '@mui/material'
 
 import Header from './assets/components/Header/Header'
 import SignIn from './assets/pages/Sign-In/Sign-In.page'
-import { Route, Routes } from 'react-router'
+import Dashboard from './assets/pages/Dashboard/Dashboard.page'
 
 const theme = createTheme({
 	colorSchemes: {
@@ -22,11 +23,15 @@ export default function App() {
 				<Routes>
 					<Route
 						path='/'
-						element={<p>123</p>}
+						element={<Link to='/Dashboard'>123</Link>}
 					/>
 					<Route
 						path='Sign-in'
 						element={<SignIn></SignIn>}
+					/>
+					<Route
+						path='Dashboard'
+						element={<Dashboard theme={theme}></Dashboard>}
 					/>
 				</Routes>
 			</main>

@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { useNavigate } from 'react-router'
 import { Container, Card, Box, Typography, Button, createTheme } from '@mui/material'
 
 import ValidatedTextField from '../../components/ValidatedTextField/ValidatedTextField'
@@ -20,12 +21,15 @@ const passwordValidator = value => {
 }
 
 export default function SignIn() {
+	let navigate = useNavigate();
+
 	const formValid = useRef({ email: false, password: false })
 
 	const handleSubmit = e => {
 		e.preventDefault()
 		if (Object.values(formValid.current).every(isValid => isValid)) {
 			console.log('Form is valid! Submitting the form...')
+			navigate('../Dashboard')
 		} else {
 			console.log('Form is invalid! Please check the fields...')
 		}
