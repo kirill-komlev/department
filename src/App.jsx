@@ -1,8 +1,7 @@
-import { useState, useRef } from 'react'
 import { Link, Route, Routes } from 'react-router'
 
-import { Button, TextField, Container, CssBaseline, Box, Card } from '@mui/material'
-import { ThemeProvider, createTheme, Typography, FormControl, FormLabel, FormHelperText, Input } from '@mui/material'
+import { CssBaseline } from '@mui/material'
+import { ThemeProvider, createTheme } from '@mui/material'
 
 import Header from './assets/components/Header/Header'
 import SignIn from './assets/pages/Sign-In/Sign-In.page'

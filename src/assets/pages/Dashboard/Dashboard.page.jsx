@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Box, Container, IconButton } from '@mui/material'
 
 import Table from '@mui/material/Table'
@@ -14,16 +16,28 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 const columns = [
-	{ id: 'full_name', label: 'ФИО', minWidth: 170 },
-	{ id: 'position', label: 'должность', minWidth: 100 },
-	{ id: 'academic_degree', label: 'ученая степень', minWidth: 140 },
-	{ id: 'disciplines', label: 'дисциплины', minWidth: 100 },
-	{ id: 'workload', label: 'нагрузка', minWidth: 100 },
-	{ id: 'community_service', label: 'общественная работа', minWidth: 100 },
-	{ id: 'part_time_work', label: 'совместительство', minWidth: 50 },
+	{ id: 'full_name', label: 'ФИО' },
+	{ id: 'position', label: 'должность' },
+	{ id: 'academic_degree', label: 'ученая степень' },
+	{ id: 'disciplines', label: 'дисциплины' },
+	{ id: 'workload', label: 'нагрузка, часов' },
+	{ id: 'community_service', label: 'общественная работа' },
+	{ id: 'part_time_work', label: 'совместительство, часов' },
 ]
 
 export default function Dashboard({ theme }) {
+	const [page, setPage] = useState(0)
+	const [rowsPerPage, setRowsPerPage] = useState(10)
+
+	const handleChangePage = (event, newPage) => {
+		setPage(newPage)
+	}
+
+	const handleChangeRowsPerPage = event => {
+		setRowsPerPage(+event.target.value)
+		setPage(0)
+	}
+
 	return (
 		<>
 			<Box
@@ -36,17 +50,16 @@ export default function Dashboard({ theme }) {
 					maxWidth='false'
 					sx={{
 						display: 'flex',
+						flexDirection: 'column',
 						alignItems: 'center',
 						justifyContent: 'center',
 					}}
 				>
 					<TableContainer>
-						<Table
-							stickyHeader
-							aria-label='sticky table'
-						>
+						<Table>
 							<TableHead>
 								<TableRow>
+									<TableCell>id</TableCell>
 									{columns.map(column => (
 										<TableCell
 											key={column.id}
@@ -56,12 +69,11 @@ export default function Dashboard({ theme }) {
 											{column.label}
 										</TableCell>
 									))}
-									<TableCell key='7'>изменить</TableCell>
-									<TableCell key='8'>удалить</TableCell>
+									<TableCell colSpan={2}>настройки</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{data.map(row => {
+								{data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
 									return (
 										<>
 											<TableRow
@@ -70,6 +82,7 @@ export default function Dashboard({ theme }) {
 												tabIndex={-1}
 												key={row.code}
 											>
+												<TableCell>{data.indexOf(row) + 1}</TableCell>
 												{columns.map(column => {
 													return (
 														<>
@@ -77,12 +90,12 @@ export default function Dashboard({ theme }) {
 														</>
 													)
 												})}
-												<TableCell key='7'>
+												<TableCell>
 													<IconButton aria-label='change'>
 														<SettingsIcon />
 													</IconButton>
 												</TableCell>
-												<TableCell key='8'>
+												<TableCell>
 													<IconButton
 														aria-label='delete'
 														color='error'
@@ -97,6 +110,15 @@ export default function Dashboard({ theme }) {
 							</TableBody>
 						</Table>
 					</TableContainer>
+					<TablePagination
+						rowsPerPageOptions={[10, 25, 100]}
+						component='div'
+						count={data.length}
+						rowsPerPage={rowsPerPage}
+						page={page}
+						onPageChange={handleChangePage}
+						onRowsPerPageChange={handleChangeRowsPerPage}
+					/>
 				</Container>
 			</Box>
 		</>
