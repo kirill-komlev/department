@@ -18,7 +18,7 @@ export default function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<Header></Header>
+			<Header theme={theme}></Header>
 			<main>
 				<Routes>
 					<Route
@@ -27,7 +27,7 @@ export default function App() {
 					/>
 					<Route
 						path='Sign-in'
-						element={<SignIn></SignIn>}
+						element={<SignIn theme={theme}></SignIn>}
 					/>
 					<Route
 						path='Dashboard'

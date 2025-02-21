@@ -1,37 +1,40 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
-import { Container, Card, Box, Typography, Button, createTheme } from '@mui/material'
 
-import ValidatedTextField from '../../components/ValidatedTextField/ValidatedTextField'
+import { Container, Card, Box, Typography, Button, TextField } from '@mui/material'
 
-const theme = createTheme({
-	colorSchemes: {
-		dark: true,
-	},
-})
+import { user } from '../../../../public/data'
 
-const emailValidator = value => {
-	if (!/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/.test(value)) return 'Неправильная почта'
-	return false
-}
+console.log(user[0].login)
 
-const passwordValidator = value => {
-	if (!value) return 'Неправильный пароль'
-	return false
-}
+export default function SignIn({ theme }) {
+	const [loginValue, setLoginValue] = useState('')
+	const [loginError, setLoginError] = useState(false)
 
-export default function SignIn() {
-	let navigate = useNavigate();
+	const [passwordValue, setPasswordValue] = useState('')
+	const [passwordError, setPasswordError] = useState(false)
 
-	const formValid = useRef({ email: false, password: false })
+	let navigate = useNavigate()
+
+	const handleChangeLogin = e => {
+		setLoginValue(e.target.value)
+	}
+
+	const handleChangePassword = e => {
+		setPasswordValue(e.target.value)
+	}
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		if (Object.values(formValid.current).every(isValid => isValid)) {
-			console.log('Form is valid! Submitting the form...')
+
+		if (loginValue != user[0].login) setLoginError(true)
+		else setLoginError(false)
+
+		if (passwordValue != user[0].password) setPasswordError(true)
+		else setPasswordError(false)
+
+		if (loginValue === user[0].login && passwordValue === user[0].password) {
 			navigate('../Dashboard')
-		} else {
-			console.log('Form is invalid! Please check the fields...')
 		}
 	}
 
@@ -77,17 +80,25 @@ export default function SignIn() {
 							>
 								Авторизация
 							</Typography>
-							<ValidatedTextField
-								label='Почта'
+							<TextField
+								fullWidth
+								id='login'
+								label='Логин'
 								type='text'
-								validator={emailValidator}
-								onChange={isValid => (formValid.current.email = isValid)}
+								value={loginValue}
+								onChange={handleChangeLogin}
+								error={loginError}
+								helperText={loginError ? 'Неправильный логин' : ''}
 							/>
-							<ValidatedTextField
+							<TextField
+								fullWidth
+								id='password'
 								label='Пароль'
 								type='password'
-								validator={passwordValidator}
-								onChange={isValid => (formValid.current.password = isValid)}
+								value={passwordValue}
+								onChange={handleChangePassword}
+								error={passwordError}
+								helperText={passwordError ? 'Неправильный пароль' : ''}
 							/>
 							<Button
 								variant='contained'

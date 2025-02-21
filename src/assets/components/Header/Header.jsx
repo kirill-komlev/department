@@ -7,17 +7,11 @@ import { Container, IconButton, Tooltip } from '@mui/material'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 
-import { useColorScheme, createTheme } from '@mui/material/styles'
+import { useColorScheme } from '@mui/material/styles'
 
 import { Link as RouterLink } from 'react-router'
 
-const theme = createTheme({
-	colorSchemes: {
-		dark: true,
-	},
-})
-
-export default function Header() {
+export default function Header({ theme }) {
 	const { mode, setMode } = useColorScheme()
 	if (!mode) {
 		return null
