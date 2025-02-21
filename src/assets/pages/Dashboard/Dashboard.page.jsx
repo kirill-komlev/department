@@ -86,7 +86,13 @@ export default function Dashboard({ theme }) {
 												{columns.map(column => {
 													return (
 														<>
-															<TableCell key={column.id}>{typeof row[column.id] == 'object' ? row['disciplines'].join(', ') : row[column.id]}</TableCell>
+															<TableCell key={column.id}>
+																{typeof row[column.id] == 'object'
+																	? row['disciplines'].join(', ')
+																	: typeof row[column.id] == 'number'
+																	? row[column.id] + ' час(а/ов)'
+																	: row[column.id]}
+															</TableCell>
 														</>
 													)
 												})}
